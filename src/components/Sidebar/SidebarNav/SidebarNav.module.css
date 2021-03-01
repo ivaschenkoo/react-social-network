@@ -1,0 +1,15 @@
+.wrapper {
+    flex-grow: 1;
+    background-color: #f8f9fb;
+}
+
+.menuList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 8em 3em 2em;
+
+    list-style-type: none;
+}

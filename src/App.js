@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import {Route} from 'react-router-dom';
 import './App.css';
+import Feed from './components/Feed/Feed';
+import Header from './components/Header/Header'
+import Sidebar from './components/Sidebar/Sidebar';
+import MessagesContainer from "./components/Messages/MessagesContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = (props) => {
+    return (
+        <div className='app-wrapper'>
+            <Sidebar />
+            <div className='contentWrapper'>
+                <Header/>
+                <Route path="/feed" render={() => <Feed/>}/>
+                <Route path="/messages"
+                       render={() => <MessagesContainer/>}/>
+
+                <Route path='/users' render={() => <UsersContainer />} />
+            </div>
+        </div>
+    )
 }
 
 export default App;

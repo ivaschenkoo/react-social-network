@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+
+    border-bottom: 1px solid #e7edf2;
+    border-right: 1px solid #e7edf2;
+}
+
+.search {
+    margin: 0 0 0 2em;
+    padding: 2em 0 2em 2em;
+
+    min-width: 600px;
+
+    border: none;
+    outline: none;
+
+    background-color: inherit;
+}
+
+.search::-webkit-search-decoration,
+.search::-webkit-search-cancel-button,
+.search::-webkit-search-results-button,
+.search::-webkit-search-results-decoration { display: none; }
+
+.searchWrapper {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 35px;
+    top: 26px;
+    bottom: 0;
+
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/search.svg);
+
+    opacity: 0.5;
+}
+
+.linkWrapper {
+    display: flex;
+}

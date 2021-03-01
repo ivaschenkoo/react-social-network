@@ -1,0 +1,10 @@
+.wrapper {
+    padding: 4em;
+
+    box-sizing: border-box;
+}
+
+.newPost {
+    position: relative;
+    z-index: 0;
+}

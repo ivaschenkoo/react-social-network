@@ -1,0 +1,36 @@
+.messageWrapper {
+    display: flex;
+    flex-shrink: 2;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 0.5em;
+    padding: 1em;
+    
+    background-color: #fff;
+    border-radius: 2em;
+}
+
+.messageText {
+    margin: 0;
+    min-width: 100px;
+    max-width: 500px;
+}
+
+.metaWrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.messageTime {
+    font-size: 0.8em;
+    text-align: right;
+    font-style: normal;
+
+    color: gray;
+}
+
+.sender {
+    align-self: flex-end;
+    background-color: #e7edf2;
+}

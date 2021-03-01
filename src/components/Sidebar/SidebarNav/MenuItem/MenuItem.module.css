@@ -1,0 +1,58 @@
+.menuItem {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 110px;
+    height: 110px;
+    padding: 1rem 0.75rem;
+
+    text-align: center;
+}
+
+.menuLink {
+    margin-top: auto;
+
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 0.8em;
+    text-decoration: none;
+
+    color: gray;
+}
+
+.activeLink {
+    color: #1874cd;
+    font-weight: bold;
+}
+
+.icon {
+    display: block;
+    margin: 0 auto;
+    height: 15px;
+    width: 15px;
+
+    opacity: 0.5;
+}
+
+.icon.feedIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/feed.svg);
+}
+
+.icon.usersIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/2700706b68838016411618c35326060f02a635ec/fi-rr-users.svg);
+}
+
+.icon.messagesIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/mess.svg);
+}
+
+.icon.photosIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/photos.svg);
+}
+
+.icon.audioIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/mus.svg);
+}
+
+.icon.videoIcon {
+    background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/video.svg);
+}
+

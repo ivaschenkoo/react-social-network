@@ -11,6 +11,7 @@ let mapStateToProps = (state) => {
 }
 
 let mapDispatchToProps = (dispatch) => {
+
     return {
         followToggle: (userId) => {
             dispatch(friendToggleAC(userId));

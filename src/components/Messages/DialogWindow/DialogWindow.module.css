@@ -25,7 +25,7 @@
     overflow: auto;
 }
 
-.messageArea {
+.buttonSendmessageArea {
     position: relative;
     display: flex;
     max-height: 200px;

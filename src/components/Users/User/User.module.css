@@ -1,0 +1,42 @@
+.userItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 33%;
+    margin: 1em;
+    padding: 1em;
+}
+
+.userPhoto {
+    border: 2px solid #1874cd;
+    border-radius: 50px;
+}
+
+.userDescriptionWrapper {
+    width: 200px;
+}
+
+.userLink {
+    color: black;
+    text-decoration: none;
+}
+
+.userName {
+    margin: 0 0 0 1em;
+    font-size: 1em;
+}
+
+.button {
+    align-self: center;
+    height: 3em;
+    width: 8em;
+
+    color: white;
+
+    border: none;
+    border-radius: 2em;
+    background: linear-gradient(to right, #1874cd, #1e90ff);
+    cursor: pointer;
+
+    outline: none;
+}

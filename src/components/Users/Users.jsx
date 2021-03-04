@@ -39,26 +39,37 @@ class Users extends React.Component {
     render() {
         return (
             <div className={styles.wrapper}>
-                <div>
-                    <ul>
-                        {this.props.users.map(el => <User id={el.id}
-                                                     key={el.id}
-                                                     fullName={`${el.name}`}
-                                                     photoUrl={el.photos.small ? el.photos.small : userPhoto}
-                                                     isFriend={el.followed}
-                                                     followToggle={this.props.followToggle} />)}
-                    </ul>
-                    <ul>
-                        <button disabled={this.props.currentPage <= 10 ? true : false}
-                                onClick={() => {this.changePage(this.props.currentPage, 'minus-ten')}}>--</button>
-                        <button disabled={this.props.currentPage <= 1 ? true : false}
-                                onClick={() => {this.changePage(this.props.currentPage, 'minus-one')}}>--</button>
-                        <li>{this.props.currentPage}</li>
-                        <button disabled={this.props.currentPage === this.props.countOfPages ? true : false}
-                                onClick={() => {this.changePage(this.props.currentPage, 'plus-one')}}>+</button>
-                        <button disabled={this.props.currentPage >= this.props.countOfPages - 9 ? true : false}
-                                onClick={() => {this.changePage(this.props.currentPage, 'plus-ten')}}>++</button>
-                    </ul>
+                <div className={styles.mainWrapper}>
+                    <div className={styles.mainContent}>
+                        <ul className={styles.usersList}>
+                            {this.props.users.map(el => <User id={el.id}
+                                                              key={el.id}
+                                                              fullName={`${el.name}`}
+                                                              photoUrl={el.photos.small ? el.photos.small : userPhoto}
+                                                              isFriend={el.followed}
+                                                              followToggle={this.props.followToggle} />)}
+                        </ul>
+                        <ul className={styles.navList}>
+                            <li className={styles.navItem}>
+                                <button disabled={this.props.currentPage <= 10 ? true : false}
+                                        onClick={() => {this.changePage(this.props.currentPage, 'minus-ten')}}>--</button>
+                            </li>
+                            <li className={styles.navItem}>
+                                <button disabled={this.props.currentPage <= 1 ? true : false}
+                                        onClick={() => {this.changePage(this.props.currentPage, 'minus-one')}}>-</button></li>
+                            <li className={styles.navItem}>
+                                <button className={styles.nonActiveButton}>{this.props.currentPage}</button>
+                            </li>
+                            <li className={styles.navItem}>
+                                <button disabled={this.props.currentPage === this.props.countOfPages ? true : false}
+                                        onClick={() => {this.changePage(this.props.currentPage, 'plus-one')}}>+</button>
+                            </li>
+                            <li className={styles.navItem}>
+                                <button disabled={this.props.currentPage >= this.props.countOfPages - 9 ? true : false}
+                                        onClick={() => {this.changePage(this.props.currentPage, 'plus-ten')}}>++</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <FilterUsers />
             </div>

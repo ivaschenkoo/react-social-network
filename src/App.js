@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar';
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 const App = (props) => {
@@ -14,11 +15,12 @@ const App = (props) => {
             <Sidebar />
             <div className='contentWrapper'>
                 <Header/>
+                <Route path="/profile/:userId?" render={() => <ProfileContainer /> } />
                 <Route path="/feed" render={() => <Feed/>}/>
                 <Route path="/messages"
                        render={() => <MessagesContainer/>}/>
 
-                <Route path='/users' render={() => <UsersContainer />} />
+                <Route path="/users" render={() => <UsersContainer />} />
             </div>
         </div>
     )

@@ -22,6 +22,7 @@
 
 .usersList {
     display: flex;
+    z-index: 0;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0;
@@ -65,4 +66,10 @@
 
 .nonActiveButton {
     cursor: default;
+}
+
+.preloaderWrapper {
+    align-self: center;
+    margin-bottom: 10%;
+    margin-left: 37%;
 }

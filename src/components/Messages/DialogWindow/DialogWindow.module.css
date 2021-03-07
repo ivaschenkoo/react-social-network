@@ -25,7 +25,7 @@
     overflow: auto;
 }
 
-.buttonSendmessageArea {
+.messageArea {
     position: relative;
     display: flex;
     max-height: 200px;
@@ -60,7 +60,7 @@
 .messageAttachment {
     margin-right: 1em;
 
-    color: transparent; 
+    color: transparent;
     cursor: pointer;
 
     background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/a357e13d472f0aa7ab2d77ecff98701f3bb74aad/fi-rr-clip.svg);
@@ -76,7 +76,7 @@
     top: 50%;
     transform: translateY(-55%);
     right: 1em;
-    
+
 
     border: none;
     border-radius: 2em;

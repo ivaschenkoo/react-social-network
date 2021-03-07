@@ -1,13 +1,15 @@
 const FRIENDTOGGLE = 'FRIEND-TOGGLE';
 const SETUSERS = 'SET-USERS';
 const SETUSERSCOUNT = 'SET-USERS-COUNT';
-const SETCURRENTPAGE = 'SET-CURRENT-PAGE'
+const SETCURRENTPAGE = 'SET-CURRENT-PAGE';
+const SETFETCHING = 'SET-FETCHING';
 
 let inititalState = {
     users: [],
     allUsersCount: 0,
     currentPage: 1,
-}
+    isFetching: true,
+};
 
 const userReducer = (state = inititalState, action) => {
     switch (action.type) {
@@ -39,36 +41,48 @@ const userReducer = (state = inititalState, action) => {
                 ...state,
                 currentPage: action.currentPage,
             }
+        case SETFETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching,
+            }
         default:
             return state;
     }
 }
 
-export const friendToggleAC = (userId) => {
+export const followToggle = (userId) => {
     return {
         type: FRIENDTOGGLE,
         id: userId,
     }
 }
 
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
     return {
         type: SETUSERS,
         users: users,
     }
 }
 
-export const setUsersCountAC = (count) => {
+export const updateAllUsersCount = (count) => {
     return {
         type: SETUSERSCOUNT,
         allUsersCount: count,
     }
 }
 
-export const setCurrentPageAC = (page) => {
+export const setPage = (page) => {
     return {
         type: SETCURRENTPAGE,
         currentPage: page,
+    }
+}
+
+export const fetchingToggle = (isFetching) => {
+    return {
+        type: SETFETCHING,
+        isFetching,
     }
 }
 

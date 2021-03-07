@@ -1,10 +1,35 @@
 .userItem {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 33%;
     margin: 1em;
     padding: 1em;
+
+    background-color: white;
+    border-radius: 40px;
+}
+
+.userItem::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    z-index: -1;
+
+    width: 90%;
+    height: 95%;
+    margin: auto;
+
+    background: #fafafa;
+    border-radius: 1em;
+    box-shadow: 0 15px 100px rgba(58, 46, 68, 0.06);
+}
+
+.userItem:hover.userItem::before {
+    background: linear-gradient(to right, #1874cd, #1e90ff);
 }
 
 .userPhoto {
@@ -13,7 +38,7 @@
 }
 
 .userDescriptionWrapper {
-    width: 200px;
+    width: 250px;
 }
 
 .userLink {
@@ -40,3 +65,5 @@
 
     outline: none;
 }
+
+

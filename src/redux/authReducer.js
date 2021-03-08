@@ -1,3 +1,5 @@
+import {headerAPI} from "../api/api";
+
 const SET_USER = 'SET-USER'
 
 let initialState = {
@@ -23,6 +25,16 @@ export const setAuthUser = (data) => {
     return {
         type: SET_USER,
         data
+    }
+}
+
+export const getAuthUser = () => {
+    return (dispatch) => {
+        headerAPI.getLoginStatus().then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthUser(data.data))
+            }
+        })
     }
 }
 

@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 const SETPROFILE = 'SET-PROFILE';
 const SETSTATUS = 'SET-STATUS';
 const SETFETCHING = 'SET FETCHING';
@@ -56,18 +58,29 @@ export const setProfile = (data) => {
         data
     }
 }
-
 export const setStatus = (status) => {
     return {
         type: SETSTATUS,
         status,
     }
 }
-
 export const fetchingToggle = (isFetching) => {
     return {
         type: SETFETCHING,
         isFetching
+    }
+}
+
+export const getUserInfo = (userId) => {
+    return (dispatch) => {
+        dispatch(fetchingToggle(true));
+        profileAPI.getUserInfo(userId).then(data => {
+            dispatch(setProfile(data));
+        })
+        profileAPI.getUserStatus(userId).then(data => {
+            dispatch(setStatus(data));
+            dispatch(fetchingToggle(false));
+        })
     }
 }
 

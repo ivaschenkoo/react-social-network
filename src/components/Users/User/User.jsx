@@ -16,7 +16,9 @@ const User = (props) => {
             </div>
             <button className={styles.button}
                     onClick={() => {props.friendToggle(props.id)}}
-                    disabled={props.followInProgress}>{props.isFriend ? 'Unfriend': 'Add Friend'}</button>
+                    disabled={props.followInProgress.some(id => id === props.id)}>
+                {props.isFriend ? 'Unfriend': 'Add Friend'}
+            </button>
         </li>
     )
 }

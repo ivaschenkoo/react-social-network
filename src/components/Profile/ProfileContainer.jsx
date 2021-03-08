@@ -2,24 +2,13 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
-import {fetchingToggle, setProfile, setStatus} from "../../redux/profileReducer";
-import {profileAPI} from "../../api/api";
+import {getUserInfo} from "../../redux/profileReducer";
 
 
 class ProfileContainer extends React.Component {
 
-
-
-
     componentDidMount() {
-        this.props.fetchingToggle(true)
-        profileAPI.getUserInfo(this.props.match.params.userId).then(data => {
-            this.props.setProfile(data)
-        })
-        profileAPI.getUserStatus(this.props.match.params.userId).then(data => {
-            this.props.setStatus(data)
-            this.props.fetchingToggle(false)
-        })
+        this.getUserInfo(this.props.match.params.userId)
     }
 
     render() {
@@ -42,4 +31,4 @@ let mapStateToProps = (state) => {
 
 let ProfileRouter = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, {setProfile, setStatus, fetchingToggle})(ProfileRouter);
+export default connect(mapStateToProps, {getUserInfo})(ProfileRouter);

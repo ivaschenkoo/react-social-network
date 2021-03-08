@@ -15,7 +15,8 @@ const User = (props) => {
                 </NavLink>
             </div>
             <button className={styles.button}
-                    onClick={() => props.followToggle(props.id) }>{props.isFriend ? 'Unfriend': 'Add Friend'}</button>
+                    onClick={() => {props.friendToggle(props.id)}}
+                    disabled={props.followInProgress}>{props.isFriend ? 'Unfriend': 'Add Friend'}</button>
         </li>
     )
 }

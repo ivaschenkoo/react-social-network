@@ -11,6 +11,9 @@ const Header = (props) => {
 				<input id='main-search' type="search" name="Search" placeholder='Search...' className={styles.search} />
 			</div>
 			<div className={styles.linkWrapper}>
+				<div>
+					<p>{props.userData.login}</p>
+				</div>
 				<HeaderItem />
 				<HeaderItem />
 			</div>

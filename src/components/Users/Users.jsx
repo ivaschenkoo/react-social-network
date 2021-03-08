@@ -20,11 +20,13 @@ const Users = (props) => {
                 <div className={styles.mainContent}>
                     <ul className={styles.usersList}>
                         {props.users.map(el => <User id={el.id}
-                                                          key={el.id}
-                                                          fullName={`${el.name}`}
-                                                          photoUrl={el.photos.small ? el.photos.small : userPhoto}
-                                                          isFriend={el.followed}
-                                                          followToggle={props.followToggle} />)}
+                                                     key={el.id}
+                                                     fullName={`${el.name}`}
+                                                     photoUrl={el.photos.small ? el.photos.small : userPhoto}
+                                                     isFriend={el.followed}
+                                                     subscribe={props.subscribe}
+                                                     friendToggle={props.friendToggle}
+                                                     followInProgress={props.followInProgress} />)}
                     </ul>
                     <ul className={styles.navList}>
                         <li className={styles.navItem}>

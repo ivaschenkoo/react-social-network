@@ -26,3 +26,5 @@ yarn-error.log*
 .public
 .node_modules
 .vscode
+
+/src/api/

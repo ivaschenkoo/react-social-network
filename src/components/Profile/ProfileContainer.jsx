@@ -2,30 +2,24 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
-import axios from "axios";
 import {fetchingToggle, setProfile, setStatus} from "../../redux/profileReducer";
+import {profileAPI} from "../../api/api";
 
 
 class ProfileContainer extends React.Component {
 
-    getUserInfo (userId) {
-        this.props.fetchingToggle(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
-            this.props.fetchingToggle(false)
-            this.props.setProfile(response.data)
-        })
-    }
 
-    getUserStatus (userId) {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/status/${userId}`).then(response => {
-            this.props.setStatus(response.data)
-        })
-    }
 
 
     componentDidMount() {
-        this.getUserInfo(this.props.match.params.userId)
-        this.getUserStatus(this.props.match.params.userId)
+        this.props.fetchingToggle(true)
+        profileAPI.getUserInfo(this.props.match.params.userId).then(data => {
+            this.props.setProfile(data)
+        })
+        profileAPI.getUserStatus(this.props.match.params.userId).then(data => {
+            this.props.setStatus(data)
+            this.props.fetchingToggle(false)
+        })
     }
 
     render() {

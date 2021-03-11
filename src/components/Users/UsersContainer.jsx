@@ -2,6 +2,8 @@ import React from 'react';
 import Users from "./Users";
 import {connect} from "react-redux";
 import {getUsers, friendToggle, changePage} from "../../redux/userReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class UsersContainer extends React.Component {
@@ -18,7 +20,7 @@ class UsersContainer extends React.Component {
                    isFetching={this.props.isFetching}
                    followInProgress={this.props.followInProgress}
                    friendToggle={this.props.friendToggle.bind(this)}
-                   changePage={this.props.changePage.bind(this)} />
+                   changePage={this.props.changePage.bind(this)}/>
         </>
     }
 
@@ -34,5 +36,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getUsers, friendToggle, changePage})(UsersContainer);
+export default compose(withAuthRedirect,
+    connect(mapStateToProps, {getUsers, friendToggle, changePage}))(UsersContainer);
 

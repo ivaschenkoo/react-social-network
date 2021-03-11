@@ -71,12 +71,17 @@ export const fetchingToggle = (isFetching) => {
     }
 }
 
-export const getUserInfo = (userId) => {
+export const getUserProfile = (userId) => {
     return (dispatch) => {
         dispatch(fetchingToggle(true));
         profileAPI.getUserInfo(userId).then(data => {
             dispatch(setProfile(data));
         })
+    }
+}
+export const getUserStatus = (userId) => {
+    return (dispatch) => {
+        dispatch(fetchingToggle(true));
         profileAPI.getUserStatus(userId).then(data => {
             dispatch(setStatus(data));
             dispatch(fetchingToggle(false));

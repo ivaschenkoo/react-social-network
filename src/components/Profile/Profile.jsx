@@ -3,14 +3,16 @@ import styles from './Profile.module.css'
 import {NavLink} from "react-router-dom";
 import defaultPhoto from "../../images/ffa09aec412db3f54deadf1b3781de2a.png";
 import Preloader from "../common/Preloader/Preloader";
+import ProfileStatusComponent from "./ProfileStatus/ProfileStatusComponent";
 
 
 const Profile = (props) => {
     return (
         <>
-            <div className={styles.preloader}>
-                <Preloader isFetching={props.isFetching}/>
-            </div>
+            {props.isFetching ?
+                <div className={styles.preloader}>
+                    <Preloader isFetching={props.isFetching}/>
+                </div> : null}
             <div className={styles.mainWrapper}>
                 <header className={styles.headerWrapper}>
                     <NavLink to='#'>
@@ -19,7 +21,7 @@ const Profile = (props) => {
                     </NavLink>
                     <div className={styles.userInfo}>
                         <h3 className={styles.userName}>{props.profile.fullName}</h3>
-                        <p className={styles.userStatus}>{props.profileStatus || 'Status will be here'}</p>
+                        <ProfileStatusComponent userId={props.userId} />
                     </div>
                 </header>
                 <main className={styles.descriptionWrapper}>

@@ -2,20 +2,22 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
-import {getUserInfo} from "../../redux/profileReducer";
+import {getUserProfile} from "../../redux/profileReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        this.getUserInfo(this.props.match.params.userId)
+        this.props.getUserProfile(this.props.match.params.userId)
     }
 
     render() {
         return (
             <Profile isFetching={this.props.isFetching}
                      profile={this.props.profile}
-                     profileStatus={this.props.profileStatus} />
+                     userId={this.props.match.params.userId}/>
         );
     }
 
@@ -24,11 +26,9 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        profileStatus: state.profilePage.profileStatus,
         isFetching: state.profilePage.isFetching
     }
 }
 
-let ProfileRouter = withRouter(ProfileContainer)
-
-export default connect(mapStateToProps, {getUserInfo})(ProfileRouter);
+export default compose(withRouter, withAuthRedirect,
+    connect(mapStateToProps, {getUserProfile}))(ProfileContainer)

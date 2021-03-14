@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
-import {getUserProfile, getUserStatus} from "../../redux/profileReducer";
+import {changeUserStatus, getUserProfile, getUserStatus} from "../../redux/profileReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
@@ -17,9 +17,10 @@ class ProfileContainer extends React.Component {
 
     render() {
         return (
-            <Profile isFetching={this.props.isFetching}
-                     profile={this.props.profile}
-                     profileStatus={this.props.profileStatus} />
+            <Profile profile={this.props.profile}
+                     profileStatus={this.props.profileStatus}
+                     isFetching={this.props.isFetching}
+                     changeUserStatus={this.props.changeUserStatus} />
         );
     }
 
@@ -28,10 +29,10 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isFetching: state.profilePage.isFetching,
         profileStatus: state.profilePage.profileStatus,
+        isFetching: state.profilePage.isFetching,
     }
 }
 
 export default compose(withRouter, withAuthRedirect,
-    connect(mapStateToProps, {getUserProfile, getUserStatus}))(ProfileContainer)
+    connect(mapStateToProps, {getUserProfile, getUserStatus, changeUserStatus}))(ProfileContainer)

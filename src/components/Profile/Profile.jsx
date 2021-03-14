@@ -13,6 +13,7 @@ const Profile = (props) => {
                 <div className={styles.preloader}>
                     <Preloader isFetching={props.isFetching}/>
                 </div> : null}
+
             <div className={styles.mainWrapper}>
                 <header className={styles.headerWrapper}>
                     <NavLink to='#'>
@@ -21,7 +22,8 @@ const Profile = (props) => {
                     </NavLink>
                     <div className={styles.userInfo}>
                         <h3 className={styles.userName}>{props.profile.fullName}</h3>
-                        <ProfileStatusComponent profileStatus={props.profileStatus} />
+                        <ProfileStatusComponent profileStatus={props.profileStatus}
+                                                changeUserStatus={props.changeUserStatus} />
                     </div>
                 </header>
                 <main className={styles.descriptionWrapper}>

@@ -5,16 +5,11 @@ import ProfileStatus from "./ProfileStatus";
 class ProfileStatusComponent extends React.Component {
     constructor(props) {
         super(props);
+        debugger
         this.state = {
             editMode: false,
             statusText: this.props.profileStatus
         }
-    }
-
-    componentDidMount() {
-        this.setState({
-            statusTest: this.props.profileStatus
-        })
     }
 
     activateEdit = () => {
@@ -27,6 +22,7 @@ class ProfileStatusComponent extends React.Component {
         this.setState({
             editMode: false,
         })
+        this.props.changeUserStatus(this.state.statusText)
     }
 
     changeStatusText = (ev) => {
@@ -39,7 +35,7 @@ class ProfileStatusComponent extends React.Component {
     render() {
         return <>
             {!this.state.editMode ?
-                <span onClick={ this.activateEdit }><ProfileStatus profileStatus={this.state.statusText} /></span>
+                <span onClick={ this.activateEdit }><ProfileStatus profileStatus={this.props.profileStatus} /></span>
                 :
                 <input autoFocus
                        onBlur={ this.deactivateEdit }

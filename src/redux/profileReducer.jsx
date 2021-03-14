@@ -55,7 +55,7 @@ const profileReducer = (state=initialState, action) => {
 export const setProfile = (data) => {
     return {
         type: SETPROFILE,
-        data
+        data,
     }
 }
 export const setStatus = (status) => {
@@ -67,7 +67,7 @@ export const setStatus = (status) => {
 export const fetchingToggle = (isFetching) => {
     return {
         type: SETFETCHING,
-        isFetching
+        isFetching,
     }
 }
 
@@ -78,11 +78,16 @@ export const getUserProfile = (userId) => (dispatch) => {
         })
 }
 export const getUserStatus = (userId) => (dispatch) => {
-        dispatch(fetchingToggle(true));
         profileAPI.getUserStatus(userId).then(data => {
             dispatch(setStatus(data));
             dispatch(fetchingToggle(false));
         })
+}
+export const changeUserStatus = (status) => (dispatch) => {
+    profileAPI.changeUserStatus(status).then(response => {
+        console.log(response)
+        dispatch(setStatus(status))
+    })
 }
 
 

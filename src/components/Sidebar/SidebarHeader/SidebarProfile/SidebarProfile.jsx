@@ -7,10 +7,10 @@ const SidebarProfile = (props) => {
     return (
         <article className={styles.container}>
             <div className={styles.wrapper}>
-                <NavLink to={`/profile/2`} className={styles.imageLink}>
+                <NavLink to={`/profile/15450`} className={styles.imageLink}>
                     <img src="https://7sisters.ru/wp-content/uploads/2020/05/tiran.jpg?resize=%2C" alt="" width='50px' height='50px' />
                 </NavLink>
-                <NavLink to={`/profile/2`} className={styles.nameLink}>
+                <NavLink to={`/profile/15450`} className={styles.nameLink}>
                     <h3>John Doe</h3>
                 </NavLink>
                 <p className={styles.profileStatus}>Member</p>

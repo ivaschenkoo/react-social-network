@@ -1,8 +1,30 @@
 import React from 'react';
+import Login from "./Login";
+import {compose} from "redux";
+import {reduxForm} from "redux-form";
+import {connect} from "react-redux";
 
 
-const LoginConatiner = (props) => {
-    return <div>test</div>
+class LoginConatiner extends React.Component {
+    onSubmit = (data) => {
+        console.log(data)
+    }
+
+    render() {
+        return (
+            <Login {...this.props} onSubmit={this.onSubmit} />
+        );
+    }
+
 }
 
-export default LoginConatiner;
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+export default compose(
+    reduxForm({form: 'login'}),
+    connect(mapStateToProps, {})
+)(LoginConatiner);

@@ -20,7 +20,7 @@ class ProfileContainer extends React.Component {
             <Profile profile={this.props.profile}
                      profileStatus={this.props.profileStatus}
                      isFetching={this.props.isFetching}
-                     changeUserStatus={this.props.changeUserStatus} />
+                     changeUserStatus={this.props.changeUserStatus}/>
         );
     }
 
@@ -34,5 +34,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default compose(withRouter, withAuthRedirect,
-    connect(mapStateToProps, {getUserProfile, getUserStatus, changeUserStatus}))(ProfileContainer)
+export default compose(
+    withRouter,
+    withAuthRedirect,
+    connect(mapStateToProps, {getUserProfile, getUserStatus, changeUserStatus}),
+)(ProfileContainer)

@@ -5,10 +5,17 @@ import ProfileStatus from "./ProfileStatus";
 class ProfileStatusComponent extends React.Component {
     constructor(props) {
         super(props);
-        debugger
         this.state = {
             editMode: false,
             statusText: this.props.profileStatus
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.profileStatus !== this.props.profileStatus) {
+            this.setState({
+                statusText: this.props.profileStatus,
+            })
         }
     }
 

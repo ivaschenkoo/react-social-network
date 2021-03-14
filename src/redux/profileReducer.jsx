@@ -71,22 +71,18 @@ export const fetchingToggle = (isFetching) => {
     }
 }
 
-export const getUserProfile = (userId) => {
-    return (dispatch) => {
+export const getUserProfile = (userId) => (dispatch) => {
         dispatch(fetchingToggle(true));
         profileAPI.getUserInfo(userId).then(data => {
             dispatch(setProfile(data));
         })
-    }
 }
-export const getUserStatus = (userId) => {
-    return (dispatch) => {
+export const getUserStatus = (userId) => (dispatch) => {
         dispatch(fetchingToggle(true));
         profileAPI.getUserStatus(userId).then(data => {
             dispatch(setStatus(data));
             dispatch(fetchingToggle(false));
         })
-    }
 }
 
 

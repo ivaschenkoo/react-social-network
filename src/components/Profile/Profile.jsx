@@ -21,7 +21,7 @@ const Profile = (props) => {
                     </NavLink>
                     <div className={styles.userInfo}>
                         <h3 className={styles.userName}>{props.profile.fullName}</h3>
-                        <ProfileStatusComponent userId={props.userId} />
+                        <ProfileStatusComponent profileStatus={props.profileStatus} />
                     </div>
                 </header>
                 <main className={styles.descriptionWrapper}>

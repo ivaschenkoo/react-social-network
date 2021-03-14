@@ -1,8 +1,5 @@
 import React from "react";
 import ProfileStatus from "./ProfileStatus";
-import {compose} from "redux";
-import {connect} from "react-redux";
-import {getUserStatus} from "../../../redux/profileReducer";
 
 
 class ProfileStatusComponent extends React.Component {
@@ -15,7 +12,9 @@ class ProfileStatusComponent extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getUserStatus(this.props.userId)
+        this.setState({
+            statusTest: this.props.profileStatus
+        })
     }
 
     activateEdit = () => {
@@ -51,12 +50,4 @@ class ProfileStatusComponent extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        profileStatus: state.profilePage.profileStatus,
-    }
-}
-
-export default compose(
-    connect(mapStateToProps, {getUserStatus})
-)(ProfileStatusComponent)
+export default ProfileStatusComponent;

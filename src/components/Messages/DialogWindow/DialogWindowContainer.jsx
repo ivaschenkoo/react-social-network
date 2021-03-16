@@ -1,7 +1,9 @@
 import React from 'react';
-import {addMessageActionCreator, updateValueActionCreator} from '../../../redux/messageReducer'
+import {addMessageActionCreator} from '../../../redux/messageReducer'
 import DialogWindow from "./DialogWindow";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {reduxForm} from "redux-form";
 
 
 let mapStateToProps = (state) => {
@@ -13,16 +15,14 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        updateState: () => {
-            dispatch(addMessageActionCreator());
-        },
-        changeState: (ev) => {
-            let message = ev.target.value;
-            dispatch(updateValueActionCreator(message));
-        },
+        onSubmit: (value) => {
+            dispatch(addMessageActionCreator(value.messageText))
+        }
     }
 }
 
-const DialogWindowContainer = connect(mapStateToProps, mapDispatchToProps)(DialogWindow);
 
-export default DialogWindowContainer;
+export default compose(
+    reduxForm({form: "DialogWindowForm"}),
+    connect(mapStateToProps, mapDispatchToProps),
+)(DialogWindow);

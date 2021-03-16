@@ -1,9 +1,6 @@
 const SET_MESSAGE = 'SET-MESSAGE';
-const SET_DEFAULT_VALUE = 'SET-DEFAULT-VALUE';
-
 
 let initialState = {
-    defaultMessageValue: '',
     dialogs: [
         {userId: 1, name: 'John Doe', message: 'Hello'},
         {userId: 2, name: 'Geur Krik', message: 'And?'},
@@ -28,40 +25,27 @@ const messageReducer = (state=initialState, action) => {
             let newMessage = {
                 id: state.messages.length,
                 sender: action.isSender,
-                text: state.defaultMessageValue,
+                text: action.value,
                 time: action.currentTime,
             };
 
             return {
                 ...state,
-                defaultMessageValue: '',
                 messages: [...state.messages, newMessage],
             }
-        case SET_DEFAULT_VALUE:
-            return {
-                ...state,
-                defaultMessageValue: action.value,
-            }
-
         default:
             return state;
     }
 
 }
 
-export const addMessageActionCreator = () => {
+export const addMessageActionCreator = (value) => {
     let currentTime = new Date();
     return {
-        type: 'SET-MESSAGE',
+        type: SET_MESSAGE,
         isSender: true,
         currentTime: `${('0' + currentTime.getHours()).slice(-2)}:${('0' + currentTime.getMinutes()).slice(-2)}`,
-    }
-}
-
-export const updateValueActionCreator = (message) => {
-    return {
-        type: 'SET-DEFAULT-VALUE', 
-        value: message
+        value
     }
 }
 

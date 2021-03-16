@@ -8,4 +8,4 @@ const Login = (props) => {
     </aside>
 }
 
-export default Login;
+export default Login

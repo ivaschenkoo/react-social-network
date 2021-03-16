@@ -12,8 +12,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = () => {
-    return {}
-}
 
-export default compose(withAuthRedirect,connect(mapStateToProps, mapDispatchToProps))(Messages);
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {}),
+)(Messages);

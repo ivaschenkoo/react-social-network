@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './DialogWindow.module.css'
 import Message from "./Message/Message";
+import {Field} from "redux-form";
 
 
 const DialogWindow = (props) => {
@@ -11,16 +12,15 @@ const DialogWindow = (props) => {
                     {props.messages.map( el => <Message key={el.id} sender={el.sender} text={el.text} time={el.time} />)}
                 </ul>
             </div>
-            <div className={styles.messageArea}>
-                <label htmlFor="message-file" className={styles.messageAttachment}>Test</label>
-                <input className="visuallyHidden" type="file" name="message-file" id="message-file"/>
+            <form className={styles.messageArea} onSubmit={props.handleSubmit(props.onSubmit)}>
+                <label htmlFor="messageFile" className={styles.messageAttachment}>Test</label>
+                <Field type="file" component="input" className="visuallyHidden" name="messageFile" id="message-file" />
                 <div className={styles.textWrapper}>
-                    <textarea className={styles.messageText} value={props.defaultValue}
-                              onChange={(ev) => props.changeState(ev)}/>
-                    <button className={styles.smileButton}><span className='visuallyHidden'>Smiles</span></button>
+                    <Field className={styles.messageText} component="textarea" name="messageText" />
+                    {/*<button className={styles.smileButton}><span className='visuallyHidden'>Smiles</span></button>*/}
                 </div>
-                <button className={styles.buttonSend} onClick={props.updateState}>Send</button>
-            </div>
+                <button className={styles.buttonSend}>Send</button>
+            </form>
         </div>
     );
 }

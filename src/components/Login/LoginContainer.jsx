@@ -27,4 +27,4 @@ const mapStateToProps = (state) => {
 export default compose(
     reduxForm({form: 'login'}),
     connect(mapStateToProps, {})
-)(LoginConatiner);
+)(LoginConatiner)

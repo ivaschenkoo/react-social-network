@@ -65,17 +65,9 @@
     color: black;
 }
 
-.nameLink h3 {
-    margin: 1em 0 0;
-}
 
-.profileStatus {
-    margin: 0.5em 0 1.5em;
-
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 0.75em;
-    font-weight: 300;
-    color: black;
+.profileName {
+    margin: 1em 0 1.5em;
 }
 
 .accWrapper {

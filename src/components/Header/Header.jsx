@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css'
 import HeaderItem from './HeaderItem/HeaderItem'
+import {NavLink} from "react-router-dom";
 
 
 const Header = (props) => {
@@ -12,7 +13,8 @@ const Header = (props) => {
 			</div>
 			<div className={styles.linkWrapper}>
 				<div>
-					<p>{props.userData.login}</p>
+					<p>{props.login || <NavLink to='/login'>Login</NavLink> }</p>
+					{props.login ? <button onClick={props.logoutUser}>logout</button> : null}
 				</div>
 				<HeaderItem />
 				<HeaderItem />

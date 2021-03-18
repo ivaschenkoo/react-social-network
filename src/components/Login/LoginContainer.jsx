@@ -3,11 +3,12 @@ import Login from "./Login";
 import {compose} from "redux";
 import {reduxForm} from "redux-form";
 import {connect} from "react-redux";
+import {postUserData} from "../../redux/authReducer";
 
 
-class LoginConatiner extends React.Component {
-    onSubmit = (data) => {
-        console.log(data)
+class LoginContainer extends React.Component {
+    onSubmit = ({email, password, rememberMe}) => {
+        this.props.postUserData(email, password, rememberMe)
     }
 
     render() {
@@ -18,13 +19,13 @@ class LoginConatiner extends React.Component {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-
-    }
-}
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+    userId: state.auth.data.id,
+    error: state.auth.errorCode,
+})
 
 export default compose(
     reduxForm({form: 'login'}),
-    connect(mapStateToProps, {})
-)(LoginConatiner)
+    connect(mapStateToProps, {postUserData})
+)(LoginContainer)

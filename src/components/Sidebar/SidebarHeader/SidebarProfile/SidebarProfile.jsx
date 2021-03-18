@@ -4,27 +4,38 @@ import {NavLink} from "react-router-dom";
 
 
 const SidebarProfile = (props) => {
+    let url = props.isAuth ? `/profile/${props.userId}` : '/login'
     return (
         <article className={styles.container}>
             <div className={styles.wrapper}>
-                <NavLink to={`/profile/15450`} className={styles.imageLink}>
-                    <img src="https://7sisters.ru/wp-content/uploads/2020/05/tiran.jpg?resize=%2C" alt="" width='50px' height='50px' />
+                <span className={styles.imageLink}>
+                    <img src={`${props.photo}`} width='50px' />
+                </span>
+                <NavLink to={url} className={styles.nameLink}>
+                    <h3 className={styles.profileName}>{props.name || 'Please login'}</h3>
                 </NavLink>
-                <NavLink to={`/profile/15450`} className={styles.nameLink}>
-                    <h3>John Doe</h3>
-                </NavLink>
-                <p className={styles.profileStatus}>Member</p>
             </div>
             <ul className={styles.accWrapper}>
                 <li>
-                    <a href="#" className={styles.accLink}><span>1</span><p>Friends</p></a>
+                    {props.isAuth ?
+                        <a href="#" className={styles.accLink}>
+                            <span>1</span><p>Friends</p>
+                        </a>
+                        : null
+                    }
                 </li>
                 <li>
-                <a href="#" className={styles.accLink}><span>5</span><p>Groups</p></a>
+                    {props.isAuth ?
+                        <a href="#" className={styles.accLink}>
+                            <span>5</span><p>Groups</p>
+                        </a>
+                        : null
+                    }
+
                 </li>
             </ul>
         </article>
     )
 }
 
-export default SidebarProfile;
+export default SidebarProfile

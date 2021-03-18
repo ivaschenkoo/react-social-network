@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SidebarHeader.module.css';
-import SidebarProfile from './SidebarProfile/SidebarProfile';
 import mainLogo from '../../../images/logo-trill.png'
+import SidebarProfileContainer from "./SidebarProfile/SidebarProfileContainer";
 
 
 const SidebarHeader = (props) => {
@@ -11,7 +11,7 @@ const SidebarHeader = (props) => {
                 <img src={mainLogo} alt="website logo" className={styles.logoImage} />
             </a>
 
-            <SidebarProfile />
+            <SidebarProfileContainer />
         </header>
     )
 }

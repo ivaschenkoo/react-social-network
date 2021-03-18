@@ -8,30 +8,32 @@ const minLength4 = minLength(4);
 
 const LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit(props.onSubmit)}>
-        <Field name='test'
+        <Field name='email'
                component={LoginFormInput}
-               className='test'
-               placeholder='test'
+               placeholder='email'
+               type='email'
                validate={[required, minLength4]}
         />
-        <Field name='login'
-               component='input'
-               placeholder='login'
+        <Field name='password'
+               component={LoginFormInput}
+               placeholder='password'
+               type='password'
                validate={[required, minLength4]}
-        /> <br/>
-        <Field name={'password'}
-               component={'input'}
-               placeholder={'password'}
-               type={'password'}
-               validate={[required]}
-
-        /> <br/>
+        />
         <span>
             <Field name={'rememberMe'}
                    component={'input'}
                    type={'checkbox'}
             /> Remember Me
         </span> <br/>
+        {props.error ?
+            <div>
+                {props.error === 1 ? 'incorrect email or password'
+                        : props.error === 10 ? 'captcha is required'
+                            : props.error === 11 ? 'undefined error' : null}
+            </div>
+            : null
+        }
         <button>Submit</button>
     </form>
 }

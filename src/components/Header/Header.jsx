@@ -7,17 +7,13 @@ import {NavLink} from "react-router-dom";
 const Header = (props) => {
 	return (
 		<header className={styles.wrapper}>
+			<button className={`${styles.menu} ${props.active ? styles.active : null}`}
+					onClick={() => {props.setActive(!props.active)}}>
+				<span className='visuallyHidden'>Show menu</span>
+			</button>
 			<div className={styles.searchWrapper}>
 				<label htmlFor="main-search" className={styles.searchIcon}/>
 				<input id='main-search' type="search" name="Search" placeholder='Search...' className={styles.search} />
-			</div>
-			<div className={styles.linkWrapper}>
-				<div>
-					<p>{props.login || <NavLink to='/login'>Login</NavLink> }</p>
-					{props.login ? <button onClick={props.logoutUser}>logout</button> : null}
-				</div>
-				<HeaderItem />
-				<HeaderItem />
 			</div>
 		</header>
 	);

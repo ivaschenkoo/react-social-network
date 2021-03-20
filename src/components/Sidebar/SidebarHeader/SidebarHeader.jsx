@@ -7,13 +7,13 @@ import SidebarProfileContainer from "./SidebarProfile/SidebarProfileContainer";
 const SidebarHeader = (props) => {
     return (
         <header className={styles.container}>
-            <a href="#" className={styles.logoLink}>
+            <div className={styles.logoLink}>
                 <img src={mainLogo} alt="website logo" className={styles.logoImage} />
-            </a>
+            </div>
 
             <SidebarProfileContainer />
         </header>
     )
 }
 
-export default SidebarHeader;
+export default SidebarHeader

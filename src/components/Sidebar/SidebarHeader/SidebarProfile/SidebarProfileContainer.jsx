@@ -3,14 +3,11 @@ import SidebarProfile from "./SidebarProfile";
 import {connect} from "react-redux";
 import userPhoto from '../../../../images/ffa09aec412db3f54deadf1b3781de2a.png'
 import {compose} from "redux";
+import {logoutUser} from "../../../../redux/authReducer";
 
 
-class SidebarProfileContainer extends React.Component {
-
-    render() {
-        return <SidebarProfile {...this.props} />
-    }
-
+const SidebarProfileContainer = (props) => {
+    return <SidebarProfile {...props} />
 }
 
 let mapStateToProps = (state) => ({
@@ -21,5 +18,5 @@ let mapStateToProps = (state) => ({
 })
 
 export default compose(
-    connect(mapStateToProps, {})
+    connect(mapStateToProps, {logoutUser})
 )(SidebarProfileContainer)

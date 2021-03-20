@@ -9,31 +9,16 @@ const SidebarProfile = (props) => {
         <article className={styles.container}>
             <div className={styles.wrapper}>
                 <span className={styles.imageLink}>
-                    <img src={`${props.photo}`} width='50px' />
+                    <img src={`${props.photo}`} width='50px' alt={props.isAuth ? props.name : 'undefined user' } />
                 </span>
-                <NavLink to={url} className={styles.nameLink}>
-                    <h3 className={styles.profileName}>{props.name || 'Please login'}</h3>
-                </NavLink>
+                <span className={styles.aboutWrapper}>
+                    <NavLink to={url} className={styles.nameLink}>
+                        <h3 className={styles.profileName}>{props.name || 'Please login'}</h3>
+                    </NavLink>
+                    {props.isAuth ? <button className={styles.button}
+                                            onClick={() => props.logoutUser()}>Logout</button> : null}
+                </span>
             </div>
-            <ul className={styles.accWrapper}>
-                <li>
-                    {props.isAuth ?
-                        <a href="#" className={styles.accLink}>
-                            <span>1</span><p>Friends</p>
-                        </a>
-                        : null
-                    }
-                </li>
-                <li>
-                    {props.isAuth ?
-                        <a href="#" className={styles.accLink}>
-                            <span>5</span><p>Groups</p>
-                        </a>
-                        : null
-                    }
-
-                </li>
-            </ul>
         </article>
     )
 }

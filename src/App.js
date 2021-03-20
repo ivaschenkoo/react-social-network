@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -11,11 +11,13 @@ import FeedContainer from "./components/Feed/FeedContainer";
 
 
 const App = (props) => {
+    const [menuActive, setMenuActive] = useState(false);
+
     return (
         <div className='app-wrapper'>
-            <Sidebar />
-            <div className='contentWrapper'>
-                <HeaderContainer />
+            <Sidebar active={menuActive} setActive={setMenuActive} />
+            <div className={`contentWrapper ${menuActive ? 'menuActive' : ''}`}>
+                <HeaderContainer active={menuActive} setActive={setMenuActive} />
                 <Route path="/profile/:userId?" render={() => <ProfileContainer /> } />
                 <Route path="/feed" render={() => <FeedContainer />}/>
                 <Route path="/messages"

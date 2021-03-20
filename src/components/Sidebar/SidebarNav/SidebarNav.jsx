@@ -19,4 +19,4 @@ class SidebarNav extends React.Component {
     }
 }
 
-export default SidebarNav;
+export default SidebarNav

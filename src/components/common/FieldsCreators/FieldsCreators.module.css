@@ -1,7 +1,24 @@
-.formControl {
-
+.inputWrapper {
+    position: relative;
+    z-index: 1;
 }
 
 .formError {
-    border: 1px solid red;
+    border: 2px solid red;
+}
+
+.errorMessage {
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5em 1em;
+    z-index: 0;
+    height: 38px;
+    bottom: 4px;
+    left: 0;
+
+    color: white;
+    font-size: 0.8em;
+    background-color: red;
+    border-radius: 1em;
 }

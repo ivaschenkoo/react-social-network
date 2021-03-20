@@ -3,11 +3,11 @@ import styles from './FieldsCreators.module.css'
 
 
 const FieldsCreator = (Element) => ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error;
+    const hasError = meta.touched && meta.error && !meta.active;
     return (
-        <div>
+        <div className={styles.inputWrapper}>
             <Element {...input} {...props} className={props.className + (hasError ? ` ${styles.formError}` : "") } />
-            { hasError && <span> { meta.error } </span> }
+            { hasError && <span className={styles.errorMessage}>{ meta.error }</span> }
         </div>
     );
 };

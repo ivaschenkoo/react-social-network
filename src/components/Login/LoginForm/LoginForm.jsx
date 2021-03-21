@@ -26,7 +26,7 @@ const LoginForm = (props) => {
                        validate={[required, minLength4]}
                 />
                 <div className={styles.adWrapper}>
-                    <span>
+                    <span className={styles.checkbox}>
                         <Field name={'rememberMe'}
                            component={'input'}
                            type={'checkbox'}
@@ -43,6 +43,7 @@ const LoginForm = (props) => {
                     <button className={styles.button}>Submit</button>
                 </div>
             </form>
+            <a href="https://social-network.samuraijs.com/signUp" className={styles.link}>Register</a>
         </div>
     )
 }

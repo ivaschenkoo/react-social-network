@@ -5,16 +5,17 @@
     z-index: 2;
 
     width: 22vw;
-    max-width: 400px;
+    min-width: 22vw;
     height: 100vh;
 
     border-right: 1px solid #e7edf2;
+    overflow: auto;
 }
 
-@media (min-width: 481px) and (max-width: 768px){
+@media (min-width: 481px) and (max-width: 1366px){
     .wrapper {
         position: fixed;
-        width: 40vw;
+        width: 43vw;
         height: 100vh;
         transform: translateX(-100%);
         transition: all 0.4s;

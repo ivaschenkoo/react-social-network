@@ -6,6 +6,10 @@ import {compose} from "redux";
 import {reduxForm} from "redux-form";
 
 
+const DialogWindowContainer = (props) => {
+    return <DialogWindow {...props} />
+}
+
 let mapStateToProps = (state) => {
     return {
         messages: state.messagesPage.messages,
@@ -25,4 +29,4 @@ let mapDispatchToProps = (dispatch) => {
 export default compose(
     reduxForm({form: "DialogWindowForm"}),
     connect(mapStateToProps, mapDispatchToProps),
-)(DialogWindow);
+)(DialogWindowContainer);

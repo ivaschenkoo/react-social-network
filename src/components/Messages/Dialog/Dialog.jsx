@@ -7,8 +7,10 @@ const Dialog = (props) => {
     return (
         <NavLink to={`/messages/${props.userId}`} className={styles.profileLink} activeClassName={styles.active}>
             <article className={styles.wrapper}>
-                <img src="https://7sisters.ru/wp-content/uploads/2020/05/tiran.jpg?resize=%2C" alt="Profile image" className={styles.profileImage}/>
-                <div className={styles.messageWraper}>
+                <img src="https://7sisters.ru/wp-content/uploads/2020/05/tiran.jpg?resize=%2C"
+                     alt="Profile"
+                     className={styles.profileImage}/>
+                <div className={styles.messageWrapper}>
                     <div>
                         <h3 className={styles.profileName}>{props.userName}</h3>
                         <p className={styles.message}>{props.message} </p>

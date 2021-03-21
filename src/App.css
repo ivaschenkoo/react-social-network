@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: calc(100vh - 80px);
+  height: 100vh;
 
   background-color: #f7f7f7;
 }
@@ -28,13 +28,13 @@
   clip: rect(0 0 0 0)
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 1366px) {
   .contentWrapper {
     transform: translateX(0);
     transition: all 0.4s;
   }
   .contentWrapper.menuActive {
-    transform: translateX(40vw);
+    transform: translateX(43vw);
     transition: all 0.4s;
   }
 }

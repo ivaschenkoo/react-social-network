@@ -60,7 +60,7 @@ const Users = (props) => {
                 </div>
             </div>
 
-            <FilterUsers />
+            <FilterUsers className={styles.filter} />
         </div>
     )
 }

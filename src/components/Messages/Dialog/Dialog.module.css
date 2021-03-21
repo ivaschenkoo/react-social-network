@@ -35,7 +35,7 @@
     box-shadow: 0 15px 100px rgb(58 46 68 / 6%);
 }
 
-.messageWraper {
+.messageWrapper {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;

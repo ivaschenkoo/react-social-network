@@ -60,6 +60,7 @@
 
     color: white;
 
+    font-family: "Roboto", Arial, sans-serif;
     border: none;
     border-radius: 2em;
     background: linear-gradient(to right, #1874cd, #1e90ff);
@@ -68,8 +69,22 @@
     outline: none;
 }
 
+.link {
+    margin-top: 1em;
+
+    font-family: "Roboto", Arial, sans-serif;
+    text-transform: uppercase;
+    color: black;
+}
+
+.checkbox {
+    font-family: "Roboto", Arial, sans-serif;
+}
+
 @media screen and (max-width: 480px) {
     .wrapper {
         padding: 2em 1em;
+        max-width: 250px;
     }
 }
+

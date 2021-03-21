@@ -4,9 +4,11 @@ import {NavLink} from "react-router-dom";
 import defaultPhoto from "../../images/ffa09aec412db3f54deadf1b3781de2a.png";
 import Preloader from "../common/Preloader/Preloader";
 import ProfileStatusComponent from "./ProfileStatus/ProfileStatusComponent";
+import ContactItem from "./ContactItem/ContactItem";
 
 
 const Profile = (props) => {
+    let contacts = Object.entries(props.profile.contacts)
     return (
         <>
             {props.isFetching ?
@@ -15,69 +17,39 @@ const Profile = (props) => {
                 </div> : null}
 
             <div className={styles.mainWrapper}>
-                <header className={styles.headerWrapper}>
+                <section className={styles.profileWrapper}>
                     <NavLink to='#'>
                         <img src={props.profile.photos.large || defaultPhoto}
                              alt="#" width='200px' height='auto' className={styles.headerImage}/>
                     </NavLink>
-                    <div className={styles.userInfo}>
-                        <h3 className={styles.userName}>{props.profile.fullName}</h3>
-                        <ProfileStatusComponent profileStatus={props.profileStatus}
-                                                changeUserStatus={props.changeUserStatus} />
-                    </div>
-                </header>
-                <main className={styles.descriptionWrapper}>
-                    <section className={styles.about}>
-                        <h4>About me</h4>
+                </section>
+                <section className={styles.about}>
+                    <h3 className={styles.sectionHeader}>{props.profile.fullName}</h3>
+                    <ProfileStatusComponent profileStatus={props.profileStatus}
+                                            changeUserStatus={props.changeUserStatus}/>
+
+                    <div>
+                        <h4 className={styles.sectionHeader}>About me</h4>
                         <div>
-                            <p>{props.profile.aboutMe}</p>
+                            <p className={styles.sectionDescription}>
+                                {props.profile.aboutMe || 'It will be written about me here'}
+                            </p>
                         </div>
-                    </section>
-                    <section className={styles.job}>
-                        <h4>Job</h4>
+                    </div>
+                    <div>
+                        <h4 className={styles.sectionHeader}>Job</h4>
                         <div>
-                            <i>Ищу работу: {props.profile.lookingForAJob ? "да" : "нет"}</i>
+                            <i>Looking for a job: {props.profile.lookingForAJob ? "yes" : "no"}</i>
                             <p>{props.profile.lookingForAJobDescription}</p>
                         </div>
-                    </section>
-                    <section className={styles.contacts}>
-                        <h4>Contacts</h4>
-                        <ul className={styles.linkList}>
-                            <li className={styles.linkItem}>
-                                <p>github</p>
-                                <a href={props.profile.contacts.github}>github</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>mainLink</p>
-                                <a href={props.profile.contacts.mainLink}>mainLink</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>facebook</p>
-                                <a href={props.profile.contacts.facebook}>facebook</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>instagram</p>
-                                <a href={props.profile.contacts.instagram}>instagram</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>vk</p>
-                                <a href={props.profile.contacts.vk}>vk</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>website</p>
-                                <a href={props.profile.contacts.website}>website</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>youtube</p>
-                                <a href={props.profile.contacts.youtube}>youtube</a>
-                            </li>
-                            <li className={styles.linkItem}>
-                                <p>twitter</p>
-                                <a href={props.profile.contacts.twitter}>twitter</a>
-                            </li>
-                        </ul>
-                    </section>
-                </main>
+                    </div>
+                </section>
+                <section className={styles.contacts}>
+                    <h4 className={styles.sectionHeader}>Contacts</h4>
+                        <div className={styles.linkList}>
+                            {contacts.map(el => <ContactItem contact={el[0]} link={el[1]} />)}
+                        </div>
+                </section>
             </div>
         </>
     )

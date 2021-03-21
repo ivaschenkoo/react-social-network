@@ -1,7 +1,7 @@
 .container {
     position: relative;
     min-width: 220px;
-    padding: 2.5em;
+    padding: 1.6em;
     margin: 1em auto -4em;
 
     background-color: white;
@@ -71,7 +71,8 @@
 }
 
 .profileName {
-    margin: 0 0 1em;
+    margin: 0 0 0.5em;
+    text-align: center;
 }
 
 .button {
@@ -89,15 +90,19 @@
     outline: none;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 295px){
+    .container {
+        flex-direction: column;
+        padding: 1em;
+        min-width: 100px;
+    }
+}
+
+@media (min-width: 296px) and (max-width: 928px){
     .container {
         flex-direction: row;
         padding: 1em;
-        min-width: 130px;
-    }
-
-    .wrapper {
-        flex-direction: row;
+        min-width: 100px;
     }
 
     .aboutWrapper {
@@ -105,3 +110,15 @@
     }
 
 }
+
+@media (min-width: 929px) and (max-width: 1366px) {
+    .container {
+        flex-direction: column;
+        padding: 1em;
+        min-width: 100px;
+    }
+}
+
+
+
+

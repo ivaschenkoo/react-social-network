@@ -1,7 +1,7 @@
 .menuItem {
     box-sizing: border-box;
     flex-grow: 1;
-    width: 110px;
+    width: 8vw;
     height: 110px;
     padding: 1em;
 
@@ -56,11 +56,22 @@
     background-image: url(https://raw.githubusercontent.com/ivaschenkoo/ivaschenko.github.io/9f5ef20b32c20b9d8b94fc4e297daaccae64f549/video.svg);
 }
 
-
-@media screen and (max-width: 768px) {
+@media (min-width: 769px) and (max-width: 1366px){
     .menuItem {
-        padding: 1em;
-        width: 94px;
+        width: 14vw;
+    }
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .menuItem {
+        width: 14vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menuItem {
+        width: 25vw;
         height: 94px;
     }
 }

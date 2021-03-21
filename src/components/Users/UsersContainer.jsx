@@ -19,8 +19,8 @@ class UsersContainer extends React.Component {
                    countOfPages={this.props.countOfPages}
                    isFetching={this.props.isFetching}
                    followInProgress={this.props.followInProgress}
-                   friendToggle={this.props.friendToggle.bind(this)}
-                   changePage={this.props.changePage.bind(this)}/>
+                   friendToggle={this.props.friendToggle}
+                   changePage={this.props.changePage}/>
         </>
     }
 

@@ -6,9 +6,9 @@ const Posts = (props) => {
     return (
         <div>
             <div>
-                <a href="#">All</a>
-                <a href="#">Groups</a>
-                <a href="#">Friends</a>
+                <a href="?filter=all">All</a>
+                <a href="?filter=groups">Groups</a>
+                <a href="?filter=friends">Friends</a>
             </div>
             <Post />
             <Post />

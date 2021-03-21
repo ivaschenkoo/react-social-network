@@ -7,7 +7,6 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import FeedContainer from "./components/Feed/FeedContainer";
 
 
 const App = (props) => {
@@ -19,7 +18,7 @@ const App = (props) => {
             <div className={`contentWrapper ${menuActive ? 'menuActive' : ''}`}>
                 <HeaderContainer active={menuActive} setActive={setMenuActive} />
                 <Route path="/profile/:userId?" render={() => <ProfileContainer /> } />
-                <Route path="/feed" render={() => <FeedContainer />}/>
+                {/*<Route path="/feed" render={() => <FeedContainer />}/>*/}
                 <Route path="/messages"
                        render={() => <MessagesContainer/>}/>
 

@@ -1,0 +1,23 @@
+.linkItem {
+    width: 17vw;
+}
+
+.linkTitle {
+    font-weight: bold;
+}
+
+.link {
+    color: #1874cd;
+}
+
+@media (min-width: 650px) and (max-width: 1366px){
+    .linkItem {
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width: 649px) {
+    .linkItem {
+        width: 40vw;
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import Profile from "./Profile";
 import {withRouter} from "react-router-dom";
@@ -7,33 +7,27 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
-class ProfileContainer extends React.Component {
+const ProfileContainer = (props) => {
 
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
-        this.props.getUserProfile(userId);
-        this.props.getUserStatus(userId);
-    }
+    useEffect(() => {
+        let userId = props.match.params.userId || props.loggedUserId;
+        props.getUserProfile(userId);
+        props.getUserStatus(userId);
+    }, [props.loggedUserId])
 
-    render() {
-        return (
-            <Profile profile={this.props.profile}
-                     profileStatus={this.props.profileStatus}
-                     isFetching={this.props.isFetching}
-                     changeUserStatus={this.props.changeUserStatus}/>
-        );
-    }
-
+    return <Profile profile={props.profile}
+                    profileStatus={props.profileStatus}
+                    isFetching={props.isFetching}
+                    changeUserStatus={props.changeUserStatus}/>
 }
 
-let mapStateToProps = (state) => {
-    return {
-        profile: state.profilePage.profile,
-        profileStatus: state.profilePage.profileStatus,
-        isFetching: state.profilePage.isFetching,
-        followInProgress: state.usersPage.followInProgress
-    }
-}
+let mapStateToProps = (state) => ({
+    profile: state.profilePage.profile,
+    profileStatus: state.profilePage.profileStatus,
+    isFetching: state.profilePage.isFetching,
+    followInProgress: state.usersPage.followInProgress,
+    loggedUserId: state.auth.data.id,
+})
 
 export default compose(
     withRouter,

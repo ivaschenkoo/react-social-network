@@ -7,7 +7,7 @@ class MenuItem extends React.Component {
         return (
             <li className={styles.menuItem}>
                 <NavLink to={this.props.link} className={styles.menuLink} activeClassName={styles.activeLink}>
-                    <i className={`${styles.icon} ${styles[this.props.icon]}`}></i>
+                    <i className={`${styles.icon} ${styles[this.props.icon]}`} />
                     <p>{this.props.name}</p>
                 </NavLink>
             </li>
@@ -15,4 +15,4 @@ class MenuItem extends React.Component {
     }
 }
 
-export default MenuItem;
+export default MenuItem

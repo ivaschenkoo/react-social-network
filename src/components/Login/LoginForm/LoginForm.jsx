@@ -25,6 +25,7 @@ const LoginForm = (props) => {
                        type='password'
                        validate={[required, minLength4]}
                 />
+                {props.error && <p>{props.error}</p>}
                 <div className={styles.adWrapper}>
                     <span className={styles.checkbox}>
                         <Field name={'rememberMe'}
@@ -32,14 +33,6 @@ const LoginForm = (props) => {
                            type={'checkbox'}
                         /> Remember Me
                     </span>
-                    {props.error ?
-                        <div>
-                            {props.error === 1 ? 'incorrect email or password'
-                                : props.error === 10 ? 'captcha is required'
-                                    : props.error === 11 ? 'undefined error' : null}
-                        </div>
-                        : null
-                    }
                     <button className={styles.button}>Submit</button>
                 </div>
             </form>

@@ -5,17 +5,16 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
-class FeedContainer extends React.Component {
-    render() {
-        return <Feed />;
-    }
-
+const FeedContainer = (props) => {
+    return <Feed />;
 }
 
-let mapStateToProps = (state) => {
-    return {
 
-    }
-}
+let mapStateToProps = (state) => ({
 
-export default compose(withAuthRedirect, connect(mapStateToProps, {}))(FeedContainer)
+})
+
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps, {})
+)(FeedContainer)

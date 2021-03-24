@@ -61,86 +61,68 @@ const userReducer = (state = inititalState, action) => {
     }
 }
 
-export const followToggle = (userId) => {
-    return {
-        type: FRIEND_TOGGLE,
-        id: userId,
-    }
+export const followToggle = (userId) => ({
+    type: FRIEND_TOGGLE,
+    id: userId,
+})
+export const setUsers = (users) => ({
+    type: SET_USERS,
+    users: users,
+})
+export const updateAllUsersCount = (count) => ({
+    type: SET_USERS_COUNT,
+    allUsersCount: count,
+})
+export const setPage = (page) => ({
+    type: SET_CURRENT_PAGE,
+    currentPage: page,
+})
+export const fetchingToggle = (isFetching) => ({
+    type: SET_FETCHING,
+    isFetching,
+})
+export const followInProgressToggle = (userId, status) => ({
+    type: FOLLOW_IN_PROGRESS,
+    userId,
+    status
+})
+
+export const getUsers = (currentPage, pageSize) => (dispatch) => {
+    dispatch(fetchingToggle(true));
+    userAPI.getUsers(currentPage, pageSize).then(data => {
+        dispatch(setUsers(data.items));
+        dispatch(updateAllUsersCount(data['totalCount']));
+        dispatch(fetchingToggle(false));
+    });
 }
-export const setUsers = (users) => {
-    return {
-        type: SET_USERS,
-        users: users,
-    }
-}
-export const updateAllUsersCount = (count) => {
-    return {
-        type: SET_USERS_COUNT,
-        allUsersCount: count,
-    }
-}
-export const setPage = (page) => {
-    return {
-        type: SET_CURRENT_PAGE,
-        currentPage: page,
-    }
-}
-export const fetchingToggle = (isFetching) => {
-    return {
-        type: SET_FETCHING,
-        isFetching,
-    }
-}
-export const followInProgressToggle = (userId, status) => {
-    return {
-        type: FOLLOW_IN_PROGRESS,
-        userId,
-        status
-    }
+export const friendToggle = (userId) => (dispatch) => {
+    dispatch(followInProgressToggle(userId, true));
+    userAPI.getFollowStatus(userId).then(status => {
+        if (status) {
+            userAPI.unFollow(userId).then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(followToggle(userId));
+                }
+            })
+        } else {
+            userAPI.follow(userId).then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(followToggle(userId));
+                }
+            })
+        }
+    })
+    dispatch(followInProgressToggle(userId, false));
 }
 
-export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
-        dispatch(fetchingToggle(true));
-        userAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(updateAllUsersCount(data['totalCount']));
-            dispatch(fetchingToggle(false));
-        });
-    }
-}
-export const friendToggle = (userId) => {
-    return (dispatch) => {
-        dispatch(followInProgressToggle(userId,true));
-        userAPI.getFollowStatus(userId).then(status => {
-            if (status) {
-                userAPI.unFollow(userId).then(response => {
-                    if(response.resultCode === 0) {
-                        dispatch(followToggle(userId));
-                    }
-                })
-            } else {
-                userAPI.follow(userId).then(response => {
-                    if(response.resultCode === 0) {
-                        dispatch(followToggle(userId));
-                    }
-                })
-            }
-        })
-        dispatch(followInProgressToggle(userId, false));
-    }
+export const changePage = (page) => (dispatch) => {
+    dispatch(fetchingToggle(true));
+    dispatch(setPage(page));
+    userAPI.getUsers(page, 10).then(data => {
+        dispatch(setUsers(data.items));
+        dispatch(updateAllUsersCount(data['totalCount']));
+        dispatch(fetchingToggle(false));
+    });
 }
 
-export const changePage = (page) => {
-    return (dispatch) => {
-        dispatch(fetchingToggle(true));
-        dispatch(setPage(page));
-        userAPI.getUsers(page, 10).then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(updateAllUsersCount(data['totalCount']));
-            dispatch(fetchingToggle(false));
-        });
-    }
-}
-
-export default userReducer;
+export default userReducer

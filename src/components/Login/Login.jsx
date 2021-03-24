@@ -8,7 +8,7 @@ const Login = (props) => {
     if (props.isAuth) return <Redirect to={`/profile/${props.userId}`} />
 
     return <aside className={styles.wrapper}>
-        <LoginForm {...props} onSubmit={props.onSubmit} />
+        <LoginForm {...props} error={props.error} onSubmit={props.onSubmit} />
     </aside>
 }
 

@@ -30,7 +30,7 @@ let initialState = {
     isFetching: true,
 }
 
-const profileReducer = (state=initialState, action) => {
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case SETPROFILE:
             return {
@@ -52,44 +52,39 @@ const profileReducer = (state=initialState, action) => {
     }
 }
 
-export const setProfile = (data) => {
-    return {
-        type: SETPROFILE,
-        data,
-    }
-}
-export const setStatus = (status) => {
-    return {
-        type: SETSTATUS,
-        status,
-    }
-}
-export const fetchingToggle = (isFetching) => {
-    return {
-        type: SETFETCHING,
-        isFetching,
-    }
-}
+export const setProfile = (data) => ({
+    type: SETPROFILE,
+    data,
+})
+export const setStatus = (status) => ({
+    type: SETSTATUS,
+    status,
+})
+export const fetchingToggle = (isFetching) => ({
+    type: SETFETCHING,
+    isFetching,
+})
+
 
 export const getUserProfile = (userId) => (dispatch) => {
-        dispatch(fetchingToggle(true));
-        profileAPI.getUserInfo(userId).then(data => {
-            dispatch(setProfile(data));
-        })
+    dispatch(fetchingToggle(true));
+    profileAPI.getUserInfo(userId).then(data => {
+        dispatch(setProfile(data));
+    })
 }
 export const getUserStatus = (userId) => (dispatch) => {
-        profileAPI.getUserStatus(userId).then(data => {
-            dispatch(setStatus(data));
-            dispatch(fetchingToggle(false));
-        })
+    profileAPI.getUserStatus(userId).then(data => {
+        dispatch(setStatus(data));
+        dispatch(fetchingToggle(false));
+    })
 }
 export const changeUserStatus = (status) => (dispatch) => {
     profileAPI.changeUserStatus(status).then(data => {
-        if(data.resultCode === 0) {
+        if (data.resultCode === 0) {
             dispatch(setStatus(status))
         }
     })
 }
 
 
-export default profileReducer;
+export default profileReducer

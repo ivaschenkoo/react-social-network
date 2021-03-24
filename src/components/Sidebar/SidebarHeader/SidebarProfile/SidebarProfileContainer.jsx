@@ -14,7 +14,7 @@ let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     name: state.auth.data.login,
     userId: state.auth.data.id,
-    photo: state.profilePage.profile.photos.large ? state.profilePage.profile.photos.large : userPhoto,
+    photo: state.auth.photo ? state.auth.photo : userPhoto,
 })
 
 export default compose(

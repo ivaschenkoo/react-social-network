@@ -13,4 +13,4 @@ const Feed = (props) => {
     );
 }
 
-export default Feed;
+export default Feed

@@ -49,4 +49,4 @@ export const addMessageActionCreator = (value) => {
     }
 }
 
-export default messageReducer;
+export default messageReducer

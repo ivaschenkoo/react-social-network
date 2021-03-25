@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 
 const SidebarProfile = (props) => {
-    let url = props.isAuth ? `/profile/${props.userId}` : '/login'
+    let url = props.isAuth ? `/profile/` : '/login'
     return (
         <article className={styles.container}>
             <div className={styles.wrapper}>

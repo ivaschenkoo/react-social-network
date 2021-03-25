@@ -17,11 +17,13 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER:
             return {
+                ...state,
                 data: {...action.data},
                 isAuth: true,
             }
         case LOGOUT:
             return {
+                ...state,
                 data: {
                     id: null,
                     login: null,
@@ -44,7 +46,7 @@ export const logout = () => ({
 })
 
 export const getAuthUser = () => (dispatch) => {
-    authAPI.getLoginStatus().then(data => {
+    return authAPI.getLoginStatus().then(data => {
         if (data.resultCode === 0) {
             dispatch(setAuthUser(data.data))
         }

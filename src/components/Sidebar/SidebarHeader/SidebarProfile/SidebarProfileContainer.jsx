@@ -13,7 +13,6 @@ const SidebarProfileContainer = (props) => {
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     name: state.auth.data.login,
-    userId: state.auth.data.id,
     photo: state.auth.photo ? state.auth.photo : userPhoto,
 })
 
